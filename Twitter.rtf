@@ -1,0 +1,77 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Consolas;}
+{\colortbl;\red255\green255\blue255;\red234\green234\blue234;\red43\green39\blue19;\red26\green26\blue26;
+}
+{\info
+{\author Max Franks}}\margl1440\margr1440\vieww18560\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\b\fs28 \cf0 Twitter Bot
+\b0\fs24 \
+We should be able to complete this whole project in about 10 lines of code!  This will consist of one or two JQuery ajax calls made in the javascript at the bottom of logbook.php.  JQuery is a library for interacting with the elements in the webpage DOM.  AJAX (Asynchronous javascript and xml) lets you avoid redirects by passing parameters to a url instead of javascript function pararameters.  Specifying url: \'91/api/1/resource1\'92, is the same as passing ?url=/api/1/resource1, which is how you would pass these same parameters through a link.  \
+\
+
+\b Example ajax call\
+\pard\pardeftab720
+
+\f1\b0\fs26 \cf0 \cb2 \expnd0\expndtw0\kerning0
+$('.button1').on('click', function() \{\
+    $.ajax(\{\
+        url: '/api/1/resource1',\
+        data: \{\
+            value1: 'value1',\
+            value2: 'value2'\
+        \},\
+        success: function (response) \{\
+            $('.some_dom1').html(Handlebars.resource(\{items:response.items\}));\
+        \}\
+    \});\
+\});\cf3 \expnd0\expndtw0\kerning0
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\
+
+\b Code Breakdown\
+
+\b0 $(\'91.button1\'92)	 				selects the element with id=\'91button1.\'92  $ is the shortcut symbol for ajax.\
+\'91.on(\'91click\'92, function() \{ 			tells the browser to run the following unnamed function when the selected element is clicked.\
+$.ajax(\{ 					shortcut for beginning an ajax call \
+url: \'91/api/1/resource1\'92			same as passing ?url=/api/1/resource1. \
+data: \{					\
+	//blah					data formatted as JSON \
+\},\
+success: function (response) \{	\
+	//blah					whatever you want to happen when it finishes\
+\}
+\b \
+\
+Request Parameters\
+
+\b0 url: 						Will be a url for twitter\'92s API\
+data: 						This is how we will pass the text post and authentication information to twitter.  The API will do the rest for us :)\
+success:					We should probably display a message to notify that a post was made.  \
+						Maybe even just a little twitter icon that goes from transparent to color.  \
+
+\b \
+\
+What needs to be done
+\b0 \
+JQuery Selection\
+	Select the right event		Find event triggered on sign-in on logbook.php. \
+	Assemble post using js		Get show name, DJ names from logbook.php variables.  \
+						Concatenate them to build text post.\
+						\cf4 \expnd0\expndtw0\kerning0
+'Live now on WSBF-FM Clemson, Matt & Ella with DJ Matt and DJ Ella.'\'a0\cf0 \kerning1\expnd0\expndtw0 \
+AJAX call\
+\cf4 \expnd0\expndtw0\kerning0
+	Specify ajax post 			To twitter API url, with the text and additional parameters as data.\cf0 \kerning1\expnd0\expndtw0 \
+	Twitter API				Figure out what variables twitter requires to make a post. \
+						Figure out how authentication will work.\
+						Get the username & password for WSBF twitter account\cf4 \expnd0\expndtw0\kerning0
+\
+	Provide success 			For now, we can just toggle a Twitter icon\'92s visibility.  					
+\b \cf0 \kerning1\expnd0\expndtw0 \
+\
+}
